@@ -1,0 +1,47 @@
+
+<input #search type="text" placeholder="Search..."> 
+<button (click)="findProduct(search.value)">Search</button>
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Edit Name</th>
+		<th>Price</th>
+		<th>Edit Price</th>
+		<th>Created At</th>
+		<th>Updated At</th>
+		<th>Seller Name</th>
+		<th>Actions</th>
+		<th></th>
+	</tr>
+
+	<tr *ngFor = "let product of products">
+		<td> {{product.ID}} </td>	
+		<td> {{product.name}} </td>
+		<td><form>	<input #editName type="text" placeholder="Edit Name"></form></td>
+		<td> {{product.price || currency }} </td>
+		<td><form>	<input #editPrice type="number" placeholder="Edit Price"></form></td>
+		<td> {{product.createdAt}} </td>
+		<td> {{product.updatedAt}} </td>
+		<td> {{product.sellerName}} </td>
+		<td><button (click)="updateProduct(product, editName.value, editPrice.value)">Edit</button></td>
+		<td><button (click)="deleteProduct(product)">Delete</button></td>
+
+
+</tr>
+
+<tr>
+	<td><</td>
+	<td><form>	<input #name type="text" placeholder="Enter Name"></form></td>
+	<td></td>
+	<td><form>	<input #price type="number" placeholder="Enter Price"></form></td>
+	<td></td>	
+	<td></td>
+	<td></td>
+	<td><form>	<input #sellerName type="text" placeholder="Enter Seller Name"></form></td>
+	<td><button (click)="createProduct( name.value, price.value, sellerName.value)">Create</button></td>
+	<td></td>
+</tr>
+
+
+</table>
